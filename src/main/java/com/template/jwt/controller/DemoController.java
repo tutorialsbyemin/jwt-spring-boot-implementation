@@ -1,5 +1,6 @@
 package com.template.jwt.controller;
 
+import com.template.jwt.dto.ResponseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +11,7 @@ public class DemoController {
 
     @RequestMapping("/")
     public ResponseEntity<?> handleDemo() {
-        return ResponseEntity.ok("You are authenticated");
+        return ResponseEntity.ok(new ResponseDto("You are authenticated"));
     }
 
 }

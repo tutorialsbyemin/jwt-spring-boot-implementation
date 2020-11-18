@@ -17,9 +17,9 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequestDto payload) {
+    public ResponseEntity<?> login(@RequestBody LoginRequestDto login) {
         return ResponseEntity.ok(
-                authService.login(payload.getUsername(), payload.getPassword(), payload.getRememberMe())
+                authService.login(login.getUsername(), login.getPassword(), login.getRememberMe())
                         .orElseThrow(InvalidTokenGenerationException::new));
     }
 }

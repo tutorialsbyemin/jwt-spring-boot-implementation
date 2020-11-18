@@ -11,11 +11,11 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class AuthService {
-    private final AuthenticationManager authenticationManager;
+    private final AuthenticationManager authManager;
     private final JwtService jwtService;
 
     public Optional<String> login(String username, String password, Boolean rememberMe) {
-        Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+        Authentication auth = authManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
         return Optional.of(auth)
                 .filter(Authentication::isAuthenticated)

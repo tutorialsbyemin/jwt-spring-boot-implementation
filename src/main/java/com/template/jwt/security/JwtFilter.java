@@ -10,7 +10,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Optional;
 
 @Component
 @AllArgsConstructor
@@ -18,11 +17,6 @@ public class JwtFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final MUserDetailsService mUserDetailsService;
 
-    private Optional<String> extractToken(HttpServletRequest request) {
-        return Optional.ofNullable(request.getHeader(Const.HEADER))
-                .filter(header -> header.startsWith(Const.PREFIX))
-                .map(header -> header.substring(Const.PREFIX.length()));
-    }
 
     @Override
     protected void doFilterInternal(
@@ -31,7 +25,7 @@ public class JwtFilter extends OncePerRequestFilter {
             FilterChain chain) {
 
         try {
-            extractToken(request)
+            jwtService.extractToken(request)
                     .flatMap(jwtService::parseTokenToClaims)
                     .map(jwtService::getSubjectFromClaims)
                     .map(Long::parseLong)
@@ -45,7 +39,6 @@ public class JwtFilter extends OncePerRequestFilter {
             chain.doFilter(request, response);
 
         } catch (Exception exception) {
-            exception.printStackTrace();
             logger.error(exception.getMessage());
         }
     }

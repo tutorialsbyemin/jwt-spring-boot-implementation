@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.Optional;
 
@@ -36,6 +37,12 @@ public class JwtService {
 
     }
 
+    public Optional<String> extractToken(HttpServletRequest request) {
+        return Optional.ofNullable(request.getHeader(Const.HEADER))
+                .filter(header -> header.startsWith(Const.PREFIX))
+                .map(header -> header.substring(Const.PREFIX.length()));
+    }
+
     public Optional<Jws<Claims>> parseTokenToClaims(String token) {
         try {
             return Optional.of(
@@ -56,6 +63,6 @@ public class JwtService {
     }
 
     public String getSubjectFromClaims(Jws<Claims> claimsJws) {
-            return claimsJws.getBody().getSubject();
+        return claimsJws.getBody().getSubject();
     }
 }

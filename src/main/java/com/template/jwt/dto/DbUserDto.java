@@ -1,16 +1,15 @@
 package com.template.jwt.dto;
 
 import com.template.jwt.entity.DbUser;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class DbUserDto {
     private long id;
     private String username;

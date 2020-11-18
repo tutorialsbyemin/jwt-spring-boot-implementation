@@ -1,13 +1,12 @@
 package com.template.jwt.dto;
 
 import com.template.jwt.entity.DbRole;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class DbRoleDto {
     private long id;
     private String name;

@@ -23,7 +23,6 @@ public class MUserDetails implements UserDetails {
         this.roles = roles.stream().map(r -> (GrantedAuthority) r::getName).collect(Collectors.toList());
     }
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;

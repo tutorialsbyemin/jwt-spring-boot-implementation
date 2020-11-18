@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Objects;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -36,18 +35,4 @@ public class DbUser {
         this.password = password;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        DbUser dbUser = (DbUser) o;
-        return id == dbUser.id &&
-                username.equals(dbUser.username) &&
-                password.equals(dbUser.password);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, username, password);
-    }
 }
