@@ -1,5 +1,9 @@
 # JWT Spring Boot implementation
 
+***If you are not familiar with JWT, I would highly recommend you to visit [Introduction to JWT](https://jwt.io/introduction/) page.***
+***This project is intended to IMPLEMENT JWT into Spring Boot Application.***
+
+
 ### Step 1
 #### Add following dependencies:
 * [Spring Boot Starter Web](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web)
