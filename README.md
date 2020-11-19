@@ -50,7 +50,7 @@ These interfaces extend JpaRepository interface provided by JPA that creates som
 Those methods make it easier to create SQL queries.
 For further information visit [documentation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories).
 
-######Example:
+###### Example:
 *findByUsername(String username)* method in UserRepository returns a user which has given username.
 
 
@@ -314,6 +314,6 @@ This class is intended to handle client requests for authentication.
 
 
 
-###Bonus
+### Bonus
 Custom exception *(InvalidTokenGenerationException)* has been created to use in case which something goes wrong while token generation.
 And it is handled in *(JwtExceptionHandler)* class.
